@@ -11,16 +11,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
-fun AuthScreen() {
+fun AuthScreen(navController: NavController) {
     var isLoginScreen by remember { mutableStateOf(true) }
     val primaryColor = Color(0xFF00658A)
     val secondaryColor = Color.White
@@ -41,70 +41,9 @@ fun AuthScreen() {
         Spacer(modifier = Modifier.height(24.dp))
 
         if (isLoginScreen) {
-            LoginScreen()
+            LoginScreen(navController)
         } else {
-            RegisterScreen()
-        }
-    }
-}
-
-@Composable
-fun LoginScreen() {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-
-    Column(
-        modifier = Modifier.padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
-            placeholder = { Text("Email", color = Color.Gray) }
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
-            placeholder = { Text("Пароль", color = Color.Gray) }
-        )
-        Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = { }) {
-            Text("Войти")
-        }
-    }
-}
-
-@Composable
-fun RegisterScreen() {
-    var email by remember { mutableStateOf("") }
-    var userName by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-
-    Column(
-        modifier = Modifier.padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
-            placeholder = { Text("Email", color = Color.Gray) }
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        OutlinedTextField(
-            value = userName,
-            onValueChange = { userName = it },
-            placeholder = { Text("Имя", color = Color.Gray) }
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
-            placeholder = { Text("Пароль", color = Color.Gray) }
-        )
-        Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = { }) {
-            Text("Войти")
+            RegisterScreen(navController)
         }
     }
 }
