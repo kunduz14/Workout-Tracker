@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
-class ViewModel : ViewModel() {
+class AuthViewModel : ViewModel() {
     var email by mutableStateOf("")
         private set
 
